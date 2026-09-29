@@ -1,14 +1,34 @@
 package com.project.Palaciossac.entity;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
+@Entity
+@Table (name= "product")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "idProduct")
     private Long idProduct;
+
+    @Column(nullable = false, length = 120)
     private String nameProduct;
+
+    @Column(length = 60)
     private String typeProduct;
+
+    @Column(length = 30)
     private String sizeProduct;
+
+    @Column(length = 30)
     private String colourProduct;
+
+    @Column(name = "salePrice", nullable = false)
     private BigDecimal salePrice;
+
+    @Column(nullable = false)
     private Integer stock = 0;
 
 

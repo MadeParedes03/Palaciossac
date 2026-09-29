@@ -2,7 +2,6 @@ package com.project.Palaciossac.dto;
 
 public class CustomerRequest {
 
-
     private String name;
     private String document;
     private String phone;

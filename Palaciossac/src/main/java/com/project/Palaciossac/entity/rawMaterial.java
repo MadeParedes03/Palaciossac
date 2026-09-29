@@ -1,11 +1,25 @@
 package com.project.Palaciossac.entity;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
+@Entity
+@Table (name = "rayMaterial")
 public class rawMaterial {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name= "idMaterial")
     private Long idMaterial;
+
+    @Column(nullable = false, length = 120)
     private String name;
+
+    @Column(name = "unitsOfMeasurement", length = 20)
     private String unitsOfMeasurement;
+
+    @Column(nullable = false)
     private BigDecimal stock = BigDecimal.ZERO;
 
     public rawMaterial() {

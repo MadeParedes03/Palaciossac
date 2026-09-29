@@ -1,22 +1,40 @@
 package com.project.Palaciossac.entity;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "detailSale")
 public class detailSale {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idDetailSale")
     private Long idDetailSale;
+
+    @ManyToOne
+    @JoinColumn(name = "idSale" )
     private Sale sale;
+
+    @ManyToOne
+    @JoinColumn(name = "idProduct")
     private Product product;
-    private Integer amount;
-    private BigDecimal unitaryPrice;
+
+    @Column(nullable = false)
+    private Integer quantity;
+
+    @Column(name = "unitPrice",nullable = false)
+    private BigDecimal unitPrice;
+
+    @Column(nullable = false)
     private BigDecimal subTotal;
 
 
-    public detailSale(Product product, Integer amount, BigDecimal unitaryPrice) {
+    public detailSale(Product product, Integer quantity, BigDecimal unitPrice) {
         this.product = product;
-        this.amount = amount;
-        this.unitaryPrice = unitaryPrice;
-        this.subTotal = unitaryPrice.multiply(BigDecimal.valueOf(amount));
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.subTotal = unitPrice.multiply(BigDecimal.valueOf(quantity));
     }
 
     public Long getIdDetailSale() {
@@ -43,20 +61,20 @@ public class detailSale {
         this.product = product;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setAmount(Integer amount) {
-        this.amount = amount;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public BigDecimal getUnitaryPrice() {
-        return unitaryPrice;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnitaryPrice(BigDecimal unitaryPrice) {
-        this.unitaryPrice = unitaryPrice;
+    public void setUnitPrice(BigDecimal unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public BigDecimal getSubTotal() {

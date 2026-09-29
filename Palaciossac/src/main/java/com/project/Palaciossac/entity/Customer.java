@@ -1,11 +1,26 @@
 package com.project.Palaciossac.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table (name = "customer")
 public class Customer {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "id_customer")
     private Long idCustomer;
+
+    @Column(nullable = false, length = 120)
     private String name;
+
+    @Column (length = 20, unique=true)
     private String document;
+
+    @Column(length =  20)
     private String phone;
+
+    @Column(length =  200)
     private String address;
 
     public Customer() {

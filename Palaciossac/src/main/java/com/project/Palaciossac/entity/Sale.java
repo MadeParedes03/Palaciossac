@@ -1,18 +1,39 @@
 package com.project.Palaciossac.entity;
 
+import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table (name = "sale")
 public class Sale {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idSale")
     private Long idSale;
+
+    @ManyToOne
+    @JoinColumn(name = "idCustomer")
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "idEmployee")
     private Employee employee;
+
+    @Column(nullable = false)
     private LocalDate date;
+
+    @Column(name = "pageType", length = 30)
     private String pageType;
+
+    @Column(nullable = false)
     private BigDecimal total = BigDecimal.ZERO;
+
+    @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<detailSale> details = new ArrayList<>();
 
     public Sale() {
