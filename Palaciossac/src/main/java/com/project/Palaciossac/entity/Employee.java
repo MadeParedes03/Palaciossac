@@ -3,46 +3,46 @@ package com.project.Palaciossac.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "employee")
+@Table(name = "empleado")
 public class Employee {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column (name = "idEmployee")
-    private Long idEmployee;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_empleado")
+    private Long id;
 
-    @Column(nullable = false, length = 120)
-    private String nameEmployee;
+    @Column(name = "nombre", nullable = false, length = 120)
+    private String name;
 
-    @Column(length = 80)
+    @Column(name = "cargo", length = 80)
     private String position;
 
-    @Column(length = 20)
-    private String phoneEmployee;
+    @Column(name = "telefono", length = 20)
+    private String phone;
 
     public Employee() {
     }
 
-    public Employee(String nameEmployee, String position, String phoneEmployee) {
-        this.nameEmployee = nameEmployee;
+    public Employee(String name, String position, String phone) {
+        this.name = name;
         this.position = position;
-        this.phoneEmployee = phoneEmployee;
+        this.phone = phone;
     }
 
-    public Long getIdEmployee() {
-        return idEmployee;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNameEmployee() {
-        return nameEmployee;
+    public String getName() {
+        return name;
     }
 
-    public void setNameEmployee(String nameEmployee) {
-        this.nameEmployee = nameEmployee;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPosition() {
@@ -53,11 +53,11 @@ public class Employee {
         this.position = position;
     }
 
-    public String getPhoneEmployee() {
-        return phoneEmployee;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneEmployee(String phoneEmployee) {
-        this.phoneEmployee = phoneEmployee;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

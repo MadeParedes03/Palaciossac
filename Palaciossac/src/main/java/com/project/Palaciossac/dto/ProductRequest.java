@@ -1,15 +1,38 @@
 package com.project.Palaciossac.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+
 import java.math.BigDecimal;
 
 public class ProductRequest {
 
+    @NotBlank(message = "El nombre del producto es obligatorio")
+    @Size(max = 120, message = "El nombre no puede superar 120 caracteres")
     private String name;
+
+    @Size(max = 60, message = "El tipo no puede superar 60 caracteres")
     private String type;
+
+    @Size(max = 30, message = "El tamaño no puede superar 30 caracteres")
     private String size;
-    private String colour;
+
+    @Size(max = 30, message = "El color no puede superar 30 caracteres")
+    private String color;
+
+    @NotNull(message = "El precio de venta es obligatorio")
+    @Positive(message = "El precio de venta debe ser mayor a 0")
     private BigDecimal salePrice;
+
+    @NotNull(message = "El stock es obligatorio")
+    @PositiveOrZero(message = "El stock no puede ser negativo")
     private Integer stock;
+
+    public ProductRequest() {
+    }
 
     public String getName() {
         return name;
@@ -35,12 +58,12 @@ public class ProductRequest {
         this.size = size;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public BigDecimal getSalePrice() {

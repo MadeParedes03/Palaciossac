@@ -1,33 +1,56 @@
 package com.project.Palaciossac.entity;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "orden_produccion")
 public class ProductionOrder {
-    private Long idOrder;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_orden")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_producto", nullable = false)
     private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Employee employee;
-    private LocalDate startDate;
-    private LocalDate endDate;
+
+    @Column(name = "fecha_inicio")
+    private LocalDateTime startDate;
+
+    @Column(name = "fecha_fin")
+    private LocalDateTime endDate;
+
+    @Column(name = "cantidad", nullable = false)
     private Integer quantity;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false, length = 20)
+    private ProductionStatus status;
 
     public ProductionOrder() {
     }
 
-    public ProductionOrder(Product product, Employee employee, LocalDate startDate, Integer quantity, String status) {
+    public ProductionOrder(Product product, Employee employee, LocalDateTime startDate, Integer quantity) {
         this.product = product;
         this.employee = employee;
-        this.startDate = startDate;
+        this.startDate = startDate != null ? startDate : LocalDateTime.now();
         this.quantity = quantity;
-        this.status = status;
+        this.status = ProductionStatus.PENDIENTE;
     }
 
-    public Long getIdOrder() {
-        return idOrder;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdOrder(Long idOrder) {
-        this.idOrder = idOrder;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Product getProduct() {
@@ -46,19 +69,19 @@ public class ProductionOrder {
         this.employee = employee;
     }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
@@ -70,11 +93,11 @@ public class ProductionOrder {
         this.quantity = quantity;
     }
 
-    public String getStatus() {
+    public ProductionStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ProductionStatus status) {
         this.status = status;
     }
 }

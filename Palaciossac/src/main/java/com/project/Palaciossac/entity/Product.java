@@ -5,87 +5,86 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table (name= "product")
+@Table(name = "producto")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "idProduct")
-    private Long idProduct;
+    @Column(name = "id_producto")
+    private Long id;
 
-    @Column(nullable = false, length = 120)
-    private String nameProduct;
+    @Column(name = "nombre", nullable = false, length = 120)
+    private String name;
 
-    @Column(length = 60)
-    private String typeProduct;
+    @Column(name = "tipo", length = 60)
+    private String type;
 
-    @Column(length = 30)
-    private String sizeProduct;
+    @Column(name = "tamano", length = 30)
+    private String size;
 
-    @Column(length = 30)
-    private String colourProduct;
+    @Column(name = "color", length = 30)
+    private String color;
 
-    @Column(name = "salePrice", nullable = false)
+    @Column(name = "precio_venta", nullable = false, precision = 10, scale = 2)
     private BigDecimal salePrice;
 
-    @Column(nullable = false)
+    @Column(name = "stock", nullable = false)
     private Integer stock = 0;
-
 
     public Product() {
     }
 
-    public Product(String nameProduct, String typeProduct, String sizeProduct, String colourProduct, BigDecimal salePrice, Integer stock) {
-        this.nameProduct = nameProduct;
-        this.typeProduct = typeProduct;
-        this.sizeProduct = sizeProduct;
-        this.colourProduct = colourProduct;
+    public Product(String name, String type, String size, String color, BigDecimal salePrice, Integer stock) {
+        this.name = name;
+        this.type = type;
+        this.size = size;
+        this.color = color;
         this.salePrice = salePrice;
         this.stock = stock;
     }
 
-    public  boolean hasStock (Integer amount){
+    public boolean hasStock(Integer amount) {
         return stock != null && stock >= amount;
     }
 
-    public Long getIdProduct() {
-        return idProduct;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNameProduct() {
-        return nameProduct;
+    public String getName() {
+        return name;
     }
 
-    public void setNameProduct(String nameProduct) {
-        this.nameProduct = nameProduct;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTypeProduct() {
-        return typeProduct;
+    public String getType() {
+        return type;
     }
 
-    public void setTypeProduct(String typeProduct) {
-        this.typeProduct = typeProduct;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getSizeProduct() {
-        return sizeProduct;
+    public String getSize() {
+        return size;
     }
 
-    public void setSizeProduct(String sizeProduct) {
-        this.sizeProduct = sizeProduct;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public String getColourProduct() {
-        return colourProduct;
+    public String getColor() {
+        return color;
     }
 
-    public void setColourProduct(String colourProduct) {
-        this.colourProduct = colourProduct;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public BigDecimal getSalePrice() {

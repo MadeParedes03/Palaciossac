@@ -11,14 +11,14 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.curso</groupId>
-	<artifactId>pedidos-api</artifactId>
+	<groupId>com.project</groupId>
+	<artifactId>palaciossac</artifactId>
 	<version>1.0.0</version>
-	<name>pedidos-api</name>
+	<name>Palaciossac</name>
 	<description>
-		API de Pedidos - arquitectura tradicional (Controller / Service / Repository).
-		Punto de partida de la Clase 1, usado en la Clase 2 para refactorizar en vivo
-		hacia SOLID + Arquitectura Hexagonal.
+		API de Palacios SAC - ventas, producción (confección), inventario de materia prima y proveedores.
+		Capas tradicionales (Controller / Service / Repository) + módulo Customer en Arquitectura Hexagonal
+		+ Spring Security con JWT.
 	</description>
 
 	<properties>
@@ -56,10 +56,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+		<!-- Security dependency-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
 
 	</dependencies>

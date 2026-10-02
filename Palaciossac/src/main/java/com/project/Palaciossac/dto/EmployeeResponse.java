@@ -2,27 +2,30 @@ package com.project.Palaciossac.dto;
 
 public class EmployeeResponse {
 
-    private Long idEmployee;
+    private Long id;
+
     private String name;
+
     private String position;
+
     private String phone;
 
     public EmployeeResponse() {
     }
 
-    public EmployeeResponse(Long idEmployee, String name, String position, String phone) {
-        this.idEmployee = idEmployee;
+    public EmployeeResponse(Long id, String name, String position, String phone) {
+        this.id = id;
         this.name = name;
         this.position = position;
         this.phone = phone;
     }
 
-    public Long getIdEmployee() {
-        return idEmployee;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

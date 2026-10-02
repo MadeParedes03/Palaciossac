@@ -1,38 +1,41 @@
 package com.project.Palaciossac.dto;
 
-import java.time.LocalDate;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+import java.time.LocalDateTime;
 
 public class ProductionOrderRequest {
 
-    private Long idProduct;
-    private Long idEmployee;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    @NotNull(message = "El producto es obligatorio")
+    private Long productId;
+
+    @NotNull(message = "El empleado es obligatorio")
+    private Long employeeId;
+
+    @NotNull(message = "La cantidad es obligatoria")
+    @Positive(message = "La cantidad debe ser mayor a 0")
     private Integer quantity;
-    private String status;
 
-    public Long getIdProduct() {
-        return idProduct;
+    private LocalDateTime startDate;
+
+    public ProductionOrderRequest() {
     }
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public Long getProductId() {
+        return productId;
     }
 
-    public Long getIdEmployee() {
-        return idEmployee;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public Integer getQuantity() {
@@ -43,19 +46,11 @@ public class ProductionOrderRequest {
         this.quantity = quantity;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 }

@@ -3,33 +3,40 @@ package com.project.Palaciossac.dto;
 import java.math.BigDecimal;
 
 public class ProductResponse {
-    private Long idProduct;
+
+    private Long id;
+
     private String name;
+
     private String type;
+
     private String size;
-    private String colour;
+
+    private String color;
+
     private BigDecimal salePrice;
+
     private Integer stock;
 
     public ProductResponse() {
     }
 
-    public ProductResponse(Long idProduct, String name, String type, String size, String colour, BigDecimal salePrice, Integer stock) {
-        this.idProduct = idProduct;
+    public ProductResponse(Long id, String name, String type, String size, String color, BigDecimal salePrice, Integer stock) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.size = size;
-        this.colour = colour;
+        this.color = color;
         this.salePrice = salePrice;
         this.stock = stock;
     }
 
-    public Long getIdProduct() {
-        return idProduct;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -56,12 +63,12 @@ public class ProductResponse {
         this.size = size;
     }
 
-    public String getColour() {
-        return colour;
+    public String getColor() {
+        return color;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public BigDecimal getSalePrice() {

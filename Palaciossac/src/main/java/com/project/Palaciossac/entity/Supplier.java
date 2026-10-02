@@ -3,24 +3,24 @@ package com.project.Palaciossac.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "supplier")
+@Table(name = "proveedor")
 public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idSupplier")
-    private Long idSupplier;
+    @Column(name = "id_proveedor")
+    private Long id;
 
-    @Column(nullable = false, length = 120)
+    @Column(name = "nombre", nullable = false, length = 120)
     private String name;
 
-    @Column(length = 20)
-    private  String phone;
+    @Column(name = "telefono", length = 20)
+    private String phone;
 
-    @Column(length = 120)
+    @Column(name = "email", length = 120)
     private String email;
 
-    @Column(length = 200)
+    @Column(name = "direccion", length = 200)
     private String address;
 
     public Supplier() {
@@ -33,12 +33,12 @@ public class Supplier {
         this.address = address;
     }
 
-    public Long getIdSupplier() {
-        return idSupplier;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdSupplier(Long idSupplier) {
-        this.idSupplier = idSupplier;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

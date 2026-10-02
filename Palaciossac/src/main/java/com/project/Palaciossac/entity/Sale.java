@@ -1,70 +1,70 @@
 package com.project.Palaciossac.entity;
 
+import com.project.Palaciossac.customer.infrastructure.entities.CustomerEntity;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table (name = "sale")
+@Table(name = "venta")
 public class Sale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idSale")
-    private Long idSale;
+    @Column(name = "id_venta")
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "idCustomer")
-    private Customer customer;
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private CustomerEntity customer;
 
     @ManyToOne
-    @JoinColumn(name = "idEmployee")
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Employee employee;
 
-    @Column(nullable = false)
-    private LocalDate date;
+    @Column(name = "fecha", nullable = false)
+    private LocalDateTime saleDate;
 
-    @Column(name = "pageType", length = 30)
-    private String pageType;
+    @Column(name = "tipo_pago", length = 30)
+    private String paymentType;
 
-    @Column(nullable = false)
+    @Column(name = "total", nullable = false, precision = 12, scale = 2)
     private BigDecimal total = BigDecimal.ZERO;
 
     @OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<detailSale> details = new ArrayList<>();
+    private List<SaleDetail> details = new ArrayList<>();
 
     public Sale() {
     }
 
-    public Sale (Customer customer, Employee employee, String pageType) {
+    public Sale(CustomerEntity customer, Employee employee, String paymentType) {
         this.customer = customer;
         this.employee = employee;
-        this.pageType = pageType;
-        this.date = LocalDate.now();
-
+        this.paymentType = paymentType;
+        this.saleDate = LocalDateTime.now();
     }
 
-    public void addDetails (detailSale detail){
+    public void addDetail(SaleDetail detail) {
         detail.setSale(this);
         details.add(detail);
     }
 
-    public Long getIdSale() {
-        return idSale;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdSale(Long idSale) {
-        this.idSale = idSale;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Customer getCustomer() {
+    public CustomerEntity getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerEntity customer) {
         this.customer = customer;
     }
 
@@ -76,20 +76,20 @@ public class Sale {
         this.employee = employee;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDateTime getSaleDate() {
+        return saleDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setSaleDate(LocalDateTime saleDate) {
+        this.saleDate = saleDate;
     }
 
-    public String getPageType() {
-        return pageType;
+    public String getPaymentType() {
+        return paymentType;
     }
 
-    public void setPageType(String pageType) {
-        this.pageType = pageType;
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
     }
 
     public BigDecimal getTotal() {
@@ -100,11 +100,11 @@ public class Sale {
         this.total = total;
     }
 
-    public List<detailSale> getDetails() {
+    public List<SaleDetail> getDetails() {
         return details;
     }
 
-    public void setDetails(List<detailSale> details) {
+    public void setDetails(List<SaleDetail> details) {
         this.details = details;
     }
 }

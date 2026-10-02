@@ -1,102 +1,113 @@
 package com.project.Palaciossac.dto;
 
-import java.time.LocalDate;
+import com.project.Palaciossac.entity.ProductionStatus;
+
+import java.time.LocalDateTime;
 
 public class ProductionOrderResponse {
-    private Long idOrder;
-    private Long idProduct;
-    private String nanmeProduct;
-    private Long idEmployee;
-    private String nameEmployee;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private Integer queantity;
-    private String status;
+
+    private Long id;
+
+    private Long productId;
+
+    private String productName;
+
+    private Long employeeId;
+
+    private String employeeName;
+
+    private LocalDateTime startDate;
+
+    private LocalDateTime endDate;
+
+    private Integer quantity;
+
+    private ProductionStatus status;
 
     public ProductionOrderResponse() {
     }
 
-    public ProductionOrderResponse(Long idOrder, Long idProduct, String nanmeProduct, Long idEmployee, LocalDate startDate, String nameEmployee, LocalDate endDate, Integer queantity, String status) {
-        this.idOrder = idOrder;
-        this.idProduct = idProduct;
-        this.nanmeProduct = nanmeProduct;
-        this.idEmployee = idEmployee;
+    public ProductionOrderResponse(Long id, Long productId, String productName, Long employeeId, String employeeName, LocalDateTime startDate, LocalDateTime endDate, Integer quantity, ProductionStatus status) {
+        this.id = id;
+        this.productId = productId;
+        this.productName = productName;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
         this.startDate = startDate;
-        this.nameEmployee = nameEmployee;
         this.endDate = endDate;
-        this.queantity = queantity;
+        this.quantity = quantity;
         this.status = status;
     }
 
-    public Long getIdOrder() {
-        return idOrder;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdOrder(Long idOrder) {
-        this.idOrder = idOrder;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getIdProduct() {
-        return idProduct;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public String getNanmeProduct() {
-        return nanmeProduct;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setNanmeProduct(String nanmeProduct) {
-        this.nanmeProduct = nanmeProduct;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public Long getIdEmployee() {
-        return idEmployee;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setIdEmployee(Long idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public String getNameEmployee() {
-        return nameEmployee;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public void setNameEmployee(String nameEmployee) {
-        this.nameEmployee = nameEmployee;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 
-    public Integer getQueantity() {
-        return queantity;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQueantity(Integer queantity) {
-        this.queantity = queantity;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public String getStatus() {
+    public ProductionStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ProductionStatus status) {
         this.status = status;
     }
 }
