@@ -1,4 +1,4 @@
-package com.project.Palaciossac.service;
+package com.project.Palaciossac.Service;
 
 import com.project.Palaciossac.dto.ProductionOrderRequest;
 import com.project.Palaciossac.dto.ProductionOrderResponse;
